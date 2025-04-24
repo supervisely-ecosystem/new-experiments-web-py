@@ -1,0 +1,11 @@
+{
+  "type": "client_side_app",
+  "version": "2.0.0",
+  "name": "",
+  "description": "",
+  "categories": ["images"],
+  "min_instance_version": "6.12.34",
+  "gui_folder_path": "app",
+  "main_script": "src/main.py",
+  "src_dir": "src"
+}
