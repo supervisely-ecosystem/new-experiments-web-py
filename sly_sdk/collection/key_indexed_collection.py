@@ -9,8 +9,6 @@ import uuid
 from collections import defaultdict
 from typing import Any, Dict, Iterable, List, Optional
 
-from prettytable import PrettyTable
-
 from sly_sdk._utils import take_with_default
 
 
@@ -497,6 +495,8 @@ class KeyIndexedCollection:
         return self.clone(new_items + self.items())
 
     def __str__(self):
+        from prettytable import PrettyTable
+
         res_table = PrettyTable()
         res_table.field_names = self.item_type.get_header_ptable()  # pylint: disable=no-member
         for item in self:
