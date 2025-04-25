@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING, Dict, List, Tuple
 
 import numpy as np
 
-from sly_sdk import logger
+from sly_sdk.sly_logger import logger
 from sly_sdk.geometry.constants import (
     ANY_SHAPE,
     BITMAP,

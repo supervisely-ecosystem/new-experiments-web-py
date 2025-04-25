@@ -10,7 +10,6 @@ from typing import Dict, List, Optional, Tuple
 from sly_sdk._utils import unwrap_if_numpy
 from sly_sdk.geometry import validation
 from sly_sdk.geometry.constants import EXTERIOR, INTERIOR, POINTS
-from sly_sdk.geometry.image_rotator import ImageRotator
 from sly_sdk.imaging import image as sly_image
 from sly_sdk.io.json import JsonSerializable
 
@@ -192,7 +191,7 @@ class PointLocation(JsonSerializable):
         """
         return PointLocation(row=(self.row + drow), col=(self.col + dcol))
 
-    def rotate(self, rotator: ImageRotator) -> PointLocation:
+    def rotate(self, rotator: sly_image.ImageRotator) -> PointLocation:
         """
         Rotates current PointLocation object.
 

@@ -22,8 +22,8 @@ from sly_sdk.geometry.constants import (
     UPDATED_AT,
 )
 from sly_sdk.geometry.geometry import Geometry
-from sly_sdk.geometry.image_rotator import ImageRotator
 from sly_sdk.geometry.point_location import PointLocation, points_to_row_col_list
+from sly_sdk.imaging import image as sly_image
 
 
 class Rectangle(Geometry):
@@ -253,7 +253,7 @@ class Rectangle(Geometry):
             PointLocation(row=self.bottom, col=self.left),
         ]
 
-    def rotate(self, rotator: ImageRotator) -> Rectangle:
+    def rotate(self, rotator: sly_image.ImageRotator) -> Rectangle:
         """
         Rotates current Rectangle.
 

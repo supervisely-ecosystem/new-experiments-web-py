@@ -14,9 +14,9 @@ from PIL import ImageDraw, ImageFile, ImageFont
 from pkg_resources import parse_version
 
 from sly_sdk._utils import abs_url, get_bytes_hash, is_development, rand_str
-from sly_sdk.geometry.image_rotator import ImageRotator
 from sly_sdk.geometry.rectangle import Rectangle
 from sly_sdk.imaging.font import get_font
+import sly_sdk.imaging.image as sly_image
 from sly_sdk.io.fs import ensure_base_path, get_file_ext, silent_remove
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
@@ -969,7 +969,7 @@ def rotate(
     """
     import skimage.transform
 
-    rotator = ImageRotator(imsize=img.shape[:2], angle_degrees_ccw=degrees_angle)
+    rotator = sly_image.ImageRotator(imsize=img.shape[:2], angle_degrees_ccw=degrees_angle)
     if mode == RotateMode.KEEP_BLACK:
         return rotator.rotate_img(img, use_inter_nearest=False)  # @TODO: order = ???
     elif mode == RotateMode.CROP_BLACK:
