@@ -590,7 +590,7 @@ class WebPyApplication(metaclass=Singleton):
         import os
         from pathlib import Path
         import supervisely as sly
-        from sly_sdk..app.content import DataJson, StateJson
+        from sly_sdk.webpy.app import StateJson, DataJson
         from fastapi.staticfiles import StaticFiles
         from fastapi.routing import Mount
 
