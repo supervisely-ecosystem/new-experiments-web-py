@@ -7,5 +7,6 @@
   "min_instance_version": "6.12.34",
   "gui_folder_path": "app",
   "main_script": "src/main.py",
-  "src_dir": "src"
+  "src_dir": "src",
+  "integrated_into": ["panel"]
 }
