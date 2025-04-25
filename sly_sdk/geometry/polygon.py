@@ -8,8 +8,7 @@ from typing import Dict, List, Optional, Tuple, Union
 
 import cv2
 import numpy as np
-from shapely.geometry import Polygon as ShapelyPolygon
-from shapely.geometry import mapping
+
 
 from sly_sdk.geometry import validation
 from sly_sdk.geometry.constants import (
@@ -180,6 +179,9 @@ class Polygon(VectorGeometry):
             crop_figures = figure.crop(sly.Rectangle(1, 1, 300, 350))
         """
         try:
+            from shapely.geometry import Polygon as ShapelyPolygon
+            from shapely.geometry import mapping
+
             # points = [
             #     PointLocation(row=rect.top, col=rect.left),
             #     PointLocation(row=rect.top, col=rect.right + 1),
