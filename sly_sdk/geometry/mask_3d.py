@@ -552,7 +552,7 @@ class Mask3D(Geometry):
         :type origin: Optional[List[int]], NoneType
         """
 
-        from supervisely.volume_annotation.plane import Plane
+        from sly_sdk.volume_annotation.plane import Plane
 
         Plane.validate_name(plane_name)
 

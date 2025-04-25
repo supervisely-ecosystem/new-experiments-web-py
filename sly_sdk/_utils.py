@@ -200,7 +200,7 @@ def is_community() -> bool:
 
 
 def abs_url(relative_url: str) -> str:
-    from supervisely.api.api import SERVER_ADDRESS
+    from sly_sdk.api.api import SERVER_ADDRESS
 
     server_address = os.environ.get(SERVER_ADDRESS, "")
     if server_address == "":

@@ -297,9 +297,9 @@ class Polygon(VectorGeometry):
     @classmethod
     def allowed_transforms(cls):
         """ """
-        from supervisely.geometry.alpha_mask import AlphaMask
-        from supervisely.geometry.any_geometry import AnyGeometry
-        from supervisely.geometry.bitmap import Bitmap
-        from supervisely.geometry.rectangle import Rectangle
+        from sly_sdk.geometry.alpha_mask import AlphaMask
+        from sly_sdk.geometry.any_geometry import AnyGeometry
+        from sly_sdk.geometry.bitmap import Bitmap
+        from sly_sdk.geometry.rectangle import Rectangle
 
         return [AnyGeometry, Rectangle, Bitmap, AlphaMask]

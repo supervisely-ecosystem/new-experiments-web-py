@@ -252,7 +252,7 @@ class Geometry(JsonSerializable):
 
     def convert(self, new_geometry, contour_radius=0, approx_epsilon=None):
         """ """
-        from supervisely.geometry.any_geometry import AnyGeometry
+        from sly_sdk.geometry.any_geometry import AnyGeometry
 
         if type(self) == new_geometry or new_geometry == AnyGeometry:
             return [self]
@@ -263,15 +263,15 @@ class Geometry(JsonSerializable):
                 "from {!r} to {!r}".format(self.geometry_name(), new_geometry.geometry_name())
             )
 
-        from supervisely.geometry.alpha_mask import AlphaMask
-        from supervisely.geometry.bitmap import Bitmap
-        from supervisely.geometry.helpers import (
+        from sly_sdk.geometry.alpha_mask import AlphaMask
+        from sly_sdk.geometry.bitmap import Bitmap
+        from sly_sdk.geometry.helpers import (
             geometry_to_alpha_mask,
             geometry_to_bitmap,
             geometry_to_polygon,
         )
-        from supervisely.geometry.polygon import Polygon
-        from supervisely.geometry.rectangle import Rectangle
+        from sly_sdk.geometry.polygon import Polygon
+        from sly_sdk.geometry.rectangle import Rectangle
 
         res = []
         if new_geometry == Bitmap:

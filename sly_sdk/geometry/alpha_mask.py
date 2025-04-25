@@ -275,10 +275,10 @@ class AlphaMask(Bitmap):
     @classmethod
     def allowed_transforms(cls):
         """allowed_transforms"""
-        from supervisely.geometry.any_geometry import AnyGeometry
-        from supervisely.geometry.bitmap import Bitmap
-        from supervisely.geometry.polygon import Polygon
-        from supervisely.geometry.rectangle import Rectangle
+        from sly_sdk.geometry.any_geometry import AnyGeometry
+        from sly_sdk.geometry.bitmap import Bitmap
+        from sly_sdk.geometry.polygon import Polygon
+        from sly_sdk.geometry.rectangle import Rectangle
 
         return [AnyGeometry, Bitmap, Polygon, Rectangle]
 

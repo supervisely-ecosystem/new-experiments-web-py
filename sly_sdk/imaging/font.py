@@ -6,7 +6,7 @@ from typing import Tuple, Optional
 import os
 
 from PIL import ImageFont
-from supervisely.io.fs import get_file_ext, file_exists
+from sly_sdk.io.fs import get_file_ext, file_exists
 
 FONT_EXTENSION = ".ttf"
 DEFAULT_FONT_FILE_NAME = "DejaVuSansMono.ttf"

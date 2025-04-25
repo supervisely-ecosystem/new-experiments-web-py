@@ -733,10 +733,10 @@ class Rectangle(Geometry):
     @classmethod
     def allowed_transforms(cls):
         """ """
-        from supervisely.geometry.alpha_mask import AlphaMask
-        from supervisely.geometry.any_geometry import AnyGeometry
-        from supervisely.geometry.bitmap import Bitmap
-        from supervisely.geometry.polygon import Polygon
+        from sly_sdk.geometry.alpha_mask import AlphaMask
+        from sly_sdk.geometry.any_geometry import AnyGeometry
+        from sly_sdk.geometry.bitmap import Bitmap
+        from sly_sdk.geometry.polygon import Polygon
 
         return [AlphaMask, AnyGeometry, Bitmap, Polygon]
 

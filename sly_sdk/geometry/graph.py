@@ -684,8 +684,8 @@ class GraphNodes(Geometry):
         """
         allowed_transforms
         """
-        from supervisely.geometry.any_geometry import AnyGeometry
-        from supervisely.geometry.rectangle import Rectangle
+        from sly_sdk.geometry.any_geometry import AnyGeometry
+        from sly_sdk.geometry.rectangle import Rectangle
 
         return [AnyGeometry, Rectangle]
 

@@ -1,20 +1,20 @@
 # coding: utf-8
-from supervisely.geometry.bitmap import Bitmap
-from supervisely.geometry.mask_3d import Mask3D
-from supervisely.geometry.cuboid import Cuboid
-from supervisely.geometry.point import Point
-from supervisely.geometry.polygon import Polygon
-from supervisely.geometry.polyline import Polyline
-from supervisely.geometry.rectangle import Rectangle
-from supervisely.geometry.graph import GraphNodes
-from supervisely.geometry.any_geometry import AnyGeometry
-from supervisely.geometry.cuboid_3d import Cuboid3d
-from supervisely.geometry.pointcloud import Pointcloud
-from supervisely.geometry.point_3d import Point3d
-from supervisely.geometry.multichannel_bitmap import MultichannelBitmap
-from supervisely.geometry.closed_surface_mesh import ClosedSurfaceMesh
-from supervisely.geometry.alpha_mask import AlphaMask
-from supervisely.geometry.cuboid_2d import Cuboid2d
+from sly_sdk.geometry.bitmap import Bitmap
+from sly_sdk.geometry.mask_3d import Mask3D
+from sly_sdk.geometry.cuboid import Cuboid
+from sly_sdk.geometry.point import Point
+from sly_sdk.geometry.polygon import Polygon
+from sly_sdk.geometry.polyline import Polyline
+from sly_sdk.geometry.rectangle import Rectangle
+from sly_sdk.geometry.graph import GraphNodes
+from sly_sdk.geometry.any_geometry import AnyGeometry
+from sly_sdk.geometry.cuboid_3d import Cuboid3d
+from sly_sdk.geometry.pointcloud import Pointcloud
+from sly_sdk.geometry.point_3d import Point3d
+from sly_sdk.geometry.multichannel_bitmap import MultichannelBitmap
+from sly_sdk.geometry.closed_surface_mesh import ClosedSurfaceMesh
+from sly_sdk.geometry.alpha_mask import AlphaMask
+from sly_sdk.geometry.cuboid_2d import Cuboid2d
 
 
 _INPUT_GEOMETRIES = [
