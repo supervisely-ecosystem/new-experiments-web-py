@@ -45,5 +45,5 @@ def render():
 
     return gui_dir
 
-if __name__ == "__main__":
-    render()
+# if __name__ == "__main__":
+#     render()
