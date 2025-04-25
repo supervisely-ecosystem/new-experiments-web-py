@@ -7,7 +7,6 @@ from enum import Enum
 from typing import List, Optional, Tuple, Union
 
 import cv2
-import nrrd
 import numpy as np
 from PIL import Image as PILImage
 from PIL import ImageDraw, ImageFile, ImageFont
@@ -176,6 +175,8 @@ def validate_format(path: str) -> None:
 
         # Output: Error has occured trying to read image '/home/admin/work/docs/016_img.py'. Original exception message: "cannot identify image file '/home/admin/work/docs/016_img.py'"
     """
+    import nrrd
+
     ext = get_file_ext(path)
     if ext == ".nrrd":
         data, header = nrrd.read(path, index_order="C")
@@ -243,6 +244,8 @@ def read(path: str, remove_alpha_channel: Optional[bool] = True) -> np.ndarray:
 
         im = sly.image.read('/home/admin/work/docs/image.jpeg')
     """
+    import nrrd
+
     ext = get_file_ext(path)
     if ext == ".nrrd":
         data, header = nrrd.read(path, index_order="C")
@@ -292,6 +295,8 @@ def read_bytes(image_bytes: str, keep_alpha: Optional[bool] = False) -> np.ndarr
         im_bytes = '\xff\xd8\xff\xe0\x00\x10JFIF\x00\x01\x01\x00\x00\x01\x00\x01\...\xd9'
         im = sly.image.read_bytes(im_bytes)
     """
+    import nrrd
+
     if image_bytes.startswith(b"NRRD"):
         file_like = io.BytesIO(image_bytes)
         header = nrrd.read_header(file_like)
@@ -337,6 +342,8 @@ def write(path: str, img: np.ndarray, remove_alpha_channel: Optional[bool] = Tru
         path = '/home/admin/work/docs/new_image.jpeg'
         sly.image.write(path, image_np)
     """
+    import nrrd
+
     ensure_base_path(path)
     validate_ext(path)
 
@@ -545,6 +552,8 @@ def write_bytes(img: np.ndarray, ext: str) -> bytes:
         print(type(bytes))
         # Output: <class 'bytes'>
     """
+    import nrrd
+
     ext = ("." + ext).replace("..", ".")
     if not is_valid_ext(ext):
         raise UnsupportedImageFormat(

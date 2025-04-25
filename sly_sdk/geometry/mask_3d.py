@@ -8,7 +8,6 @@ import gzip
 import tempfile
 from typing import Dict, List, Literal, Optional, Tuple, Union
 
-import nrrd
 import numpy as np
 
 from sly_sdk._utils import unwrap_if_numpy
@@ -268,6 +267,8 @@ class Mask3D(Geometry):
         :param file_path: Path to nrrd file with data
         :type file_path: str
         """
+        import nrrd
+
         mask3d_data, mask3d_header = nrrd.read(file_path)
         figure.geometry.data = mask3d_data
         try:
@@ -295,6 +296,8 @@ class Mask3D(Geometry):
         :param file_path: Path to nrrd file with data
         :type file_path: str
         """
+        import nrrd
+
         mask3d_data, mask3d_header = nrrd.read(file_path)
         geometry = cls(data=mask3d_data)
         try:
