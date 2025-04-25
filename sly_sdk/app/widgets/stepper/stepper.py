@@ -1,7 +1,7 @@
 from typing import List
 
 from sly_sdk.webpy.app import StateJson
-from sly_sdk.app.widgets import Widget
+from sly_sdk.app.widgets.widget import Widget
 
 
 class Stepper(Widget):

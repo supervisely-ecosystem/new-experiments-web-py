@@ -1,7 +1,7 @@
 from typing import Any, Dict, Literal, Optional
 
 from sly_sdk.webpy.app import StateJson
-from sly_sdk.app.widgets import Widget
+from sly_sdk.app.widgets.widget import Widget
 from sly_sdk.sly_logger import logger
 
 
