@@ -1,7 +1,7 @@
 {
   "type": "client_side_app",
   "version": "2.0.0",
-  "name": "New Experiment",
+  "name": "New Experiments",
   "description": "Client-side app to create new experiments in Supervisely.",
   "categories": ["images"],
   "min_instance_version": "6.12.34",
