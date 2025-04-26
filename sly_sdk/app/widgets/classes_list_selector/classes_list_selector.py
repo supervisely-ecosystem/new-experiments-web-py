@@ -2,8 +2,7 @@ from typing import List, Optional, Union
 
 from sly_sdk.annotation.obj_class import ObjClass
 from sly_sdk.annotation.obj_class_collection import ObjClassCollection
-
-from sly_sdk.app.widgets import NotificationBox
+from sly_sdk.app.widgets.notification_box.notification_box import NotificationBox
 from sly_sdk.app.widgets.widget import Widget
 from sly_sdk.geometry.alpha_mask import AlphaMask
 from sly_sdk.geometry.any_geometry import AnyGeometry
