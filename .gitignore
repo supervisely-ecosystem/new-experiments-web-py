@@ -6,7 +6,10 @@ node_modules/
 *.log
 *.pyc
 .venv/
+.venv2/
 
 debug/
 supervisely/
 supervisely
+dist
+app/
