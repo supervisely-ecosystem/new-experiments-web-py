@@ -411,7 +411,8 @@ class WebPyApplication(metaclass=Singleton):
         context = {
             "__webpy_script__": "__webpy_script__.py",
             "pyodide_requirements": reqs,
-            "events_subscribed": events,
+            # "events_subscribed": events,
+            "events_subscribed": None,
         }
 
         # render index.html
