@@ -1,7 +1,7 @@
 from sly_sdk._utils import abs_url, is_debug_with_sly_net, is_development
 from sly_sdk.app.widgets.widget import Widget
 from sly_sdk.webpy.app import DataJson
-from supervisely.api.project_api import ProjectInfo
+from sly_sdk.api.project_api import ProjectInfo
 
 
 class ProjectThumbnail(Widget):

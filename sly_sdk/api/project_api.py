@@ -164,7 +164,7 @@ class ProjectApi(CloneableModuleApi, UpdateableModule, RemoveableModuleApi):
         return "ProjectInfo"
 
     def __init__(self, api):
-        from supervisely.project.data_version import DataVersion
+        from sly_sdk.project.data_version import DataVersion
 
         CloneableModuleApi.__init__(self, api)
         UpdateableModule.__init__(self, api)
