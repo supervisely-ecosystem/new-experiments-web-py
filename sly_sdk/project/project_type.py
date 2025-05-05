@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from supervisely.collection.str_enum import StrEnum
+from sly_sdk.collection.str_enum import StrEnum
 
 
 class ProjectType(StrEnum):
