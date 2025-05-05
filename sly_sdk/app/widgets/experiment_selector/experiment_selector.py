@@ -7,7 +7,11 @@ from typing import Any, Callable, Dict, List, Union
 from sly_sdk._utils import abs_url, is_development
 from sly_sdk.api.api import Api
 from sly_sdk.api.project_api import ProjectInfo
-from sly_sdk.app.widgets import Container, Flexbox, ProjectThumbnail, Select, Text
+from sly_sdk.app.widgets.flexbox.flexbox import Flexbox
+from sly_sdk.app.widgets.container.container import Container
+from sly_sdk.app.widgets.project_thumbnail.project_thumbnail import ProjectThumbnail
+from sly_sdk.app.widgets.select.select import Select
+from sly_sdk.app.widgets.text.text import Text
 from sly_sdk.app.widgets.widget import Widget
 from sly_sdk.io.fs import get_file_name_with_ext
 from sly_sdk.nn.experiments import ExperimentInfo
