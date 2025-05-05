@@ -50,7 +50,7 @@ import sly_sdk.api.file_api as file_api
 # import sly_sdk.api.plugin_api as plugin_api
 # import sly_sdk.api.pointcloud.pointcloud_api as pointcloud_api
 # import sly_sdk.api.pointcloud.pointcloud_episode_api as pointcloud_episode_api
-# import sly_sdk.api.project_api as project_api
+import sly_sdk.api.project_api as project_api
 # import sly_sdk.api.remote_storage_api as remote_storage_api
 # import sly_sdk.api.report_api as report_api
 # import sly_sdk.api.role_api as role_api
@@ -340,7 +340,7 @@ class Api:
 
         # self.team = team_api.TeamApi(self)
         # self.workspace = workspace_api.WorkspaceApi(self)
-        # self.project = project_api.ProjectApi(self)
+        self.project = project_api.ProjectApi(self)
         # self.model = neural_network_api.NeuralNetworkApi(self)
         # self.task = task_api.TaskApi(self)
         # self.dataset = dataset_api.DatasetApi(self)
