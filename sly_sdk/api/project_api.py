@@ -6,19 +6,19 @@ from __future__ import annotations
 
 from typing import Dict, NamedTuple, Optional
 
-from supervisely._utils import abs_url, compress_image_url, is_development
-from supervisely.api.module_api import (
+from sly_sdk._utils import abs_url, compress_image_url, is_development
+from sly_sdk.api.module_api import (
     ApiField,
     CloneableModuleApi,
     RemoveableModuleApi,
     UpdateableModule,
 )
-from supervisely.project.project_meta import ProjectMetaJsonFields as MetaJsonF
-from supervisely.project.project_settings import (
+from sly_sdk.project.project_meta import ProjectMetaJsonFields as MetaJsonF
+from sly_sdk.project.project_settings import (
     ProjectSettings,
     ProjectSettingsJsonFields,
 )
-from supervisely.project.project_type import ProjectType
+from sly_sdk.project.project_type import ProjectType
 
 
 class ProjectNotFound(Exception):
