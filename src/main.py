@@ -190,7 +190,7 @@ augmentations_section = Card(
 )
 
 # model
-models = load_json_file("models.json")
+models = load_json_file("src/models.json")
 filtered_models = {}
 for model_json in models:
     for key in model_json:
