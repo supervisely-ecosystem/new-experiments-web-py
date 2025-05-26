@@ -5,7 +5,6 @@ WORKDIR /app
 COPY dev_requirements.txt /app/
 
 RUN pip install --no-cache-dir -r dev_requirements.txt
-RUN git clone -b web-py-sdk https://github.com/supervisely/supervisely.git supervisely
-
+RUN git clone -b web-py-sdk https://github.com/supervisely/supervisely.git /app/supervisely
 
 CMD ["bash"]
