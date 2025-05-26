@@ -10,10 +10,10 @@ from supervisely.app.widgets import (
     Text,
 )
 
-from sly_sdk.annotation.obj_class import ObjClass
-from sly_sdk.geometry.bitmap import Bitmap
-from sly_sdk.geometry.rectangle import Rectangle
-from sly_sdk.webpy.app import WebPyApplication
+from sly_sdk_backup.annotation.obj_class import ObjClass
+from sly_sdk_backup.geometry.bitmap import Bitmap
+from sly_sdk_backup.geometry.rectangle import Rectangle
+from sly_sdk_backup.webpy.app import WebPyApplication
 
 # start
 start_btn = Button("Start", widget_id="start_button")
