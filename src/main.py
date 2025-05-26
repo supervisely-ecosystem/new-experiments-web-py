@@ -1,8 +1,7 @@
 import pandas as pd
 
-from sly_sdk.annotation.obj_class import ObjClass
-from sly_sdk.webpy.app import WebPyApplication
-from supervisely.api.api import Api
+from supervisely.annotation.obj_class import ObjClass
+from supervisely.webpy.app import WebPyApplication
 from supervisely.app.widgets import (
     Button,
     Card,
@@ -27,7 +26,8 @@ projects = None
 
 # left nav bar
 def get_navbar_btn(text):
-    return Button(text, button_size="mini", plain=True, button_type="text", show_loading=False)
+    widget_id = f"{text.lower()}_left_navbar_btn"
+    return Button(text, "text", "mini", True, False, widget_id=widget_id)
 
 
 start = get_navbar_btn("START")
@@ -89,21 +89,7 @@ cv_task_section = Card(
 )
 
 # training data
-if projects is None:
-    import os
-
-    from dotenv import load_dotenv
-
-    load_dotenv(os.path.expanduser("~/supervisely.env"))
-    api = Api.from_env()
-
-    projects = api.project.get_list(
-        workspace_id=7, filters=[{"field": "type", "operator": "=", "value": "images"}]
-    )
-
 data = []
-for p in projects:
-    data.append([p.id, p.updated_at, p.name, p.images_count])
 
 columns = ["ID", "Updated At", "Project name", "Items count"]
 columns_options = [
@@ -222,7 +208,9 @@ columns_options = [
     {"postfix": "M", "tooltip": "Number of parameters (M)"},
     {"postfix": "B", "tooltip": "Number of FLOPs (B)"},
 ]
-model_selector_table = FastTable(columns=columns, columns_options=columns_options)
+model_selector_table = FastTable(
+    columns=columns, columns_options=columns_options, widget_id="model_selector_fast_table"
+)
 model_selector_text = Text("", status="success", widget_id="model_selector_text")
 model_selector_text.hide()
 
@@ -313,24 +301,25 @@ one_of_selector = Select(
         Select.Item("hyperparameters", "Hyperparameters", content=hyperparameters_section),
         Select.Item("gpu", "GPU", content=gpu_selector_section),
         Select.Item("train", "Train", content=train_section),
-    ]
+    ],
+    widget_id="oneof_selector",
 )
 one_of_selector.hide()
-one_of = OneOf(one_of_selector)
+one_of = OneOf(one_of_selector, widget_id="oneof")
 sidebar = Sidebar(
     left_content=left_nav_bar,
     right_content=one_of,
     width_percent=18,
     show_close=False,
     show_open=False,
-    widget_id="sidebar",
     sidebar_left_padding="15px",
     height="65vh",
     standalone=False,
+    widget_id="main_sidebar",
 )
 
 
-layout = Container(widgets=[sidebar])
+layout = Container(widgets=[sidebar], widget_id="main_layout")
 
 
 def update_nav_bar(clicked_btn):
@@ -344,16 +333,39 @@ def update_nav_bar(clicked_btn):
 app = WebPyApplication(layout=layout)
 
 
+def _init_api():
+    from supervisely.api.api import Api
+
+    server_address = app.get_server_address()
+    api_token = app.get_api_token()
+    api = Api(server_address, api_token, ignore_task_id=True)
+    return api
+
+
 @cv_task.click
 def on_cv_task_click():
     update_nav_bar(cv_task)
     one_of_selector.set_value("cv_task")
-    on_cv_task_changed(cv_task_radio.get_value())
+
+
+@cv_task_btn.click
+def on_cv_task_btn_click():
+    cv_task = cv_task_radio.get_value()
+    if cv_task in ["object detection", "instance segmentation"]:
+        arch_types = list(sorted_filtered_models[cv_task].keys())
+        arch_items = [Select.Item(a, a) for a in arch_types]
+        model_arch_selector.set(items=arch_items)
+        model_arch_selector.set_value(arch_items[0].value)
+        update_model_selector(arch_items[0].value)
+    else:
+        print("Unknown cv_task:", cv_task)
+        pass
 
 
 @training_data.click
 def on_training_data_click():
     update_nav_bar(training_data)
+    update_training_data()
     one_of_selector.set_value("training_data")
 
 
@@ -364,6 +376,7 @@ def row_click(event: FastTable.ClickedRow):
     training_data_text.text = f"Selected row: {row_index}. {row}"
     training_data_text.show()
     project_id = row[0]
+    api = _init_api()
     project_meta_json = api.project.get_meta(project_id)
     obj_classes = []
     for obj_class_json in project_meta_json["objects"]:
@@ -423,31 +436,28 @@ def on_train_click():
     one_of_selector.set_value("train")
 
 
-def on_cv_task_changed(value):
-    if value in ["object detection", "instance segmentation"]:
-        arch_types = list(sorted_filtered_models[value].keys())
-        arch_items = [Select.Item(a, a) for a in arch_types]
-        model_arch_selector.set(items=arch_items)
-        update_model_selector(model_arch_selector.get_value())
-    else:
-        print("Unknown value:", value)
-        pass
-
-
 @model_arch_selector.value_changed
 def on_model_arch_changed(value):
     update_model_selector(value)
 
 
 def update_model_selector(value):
-    if value in sorted_filtered_models[cv_task_radio.get_value()]:
+    task_type = cv_task_radio.get_value()
+    if value in sorted_filtered_models[task_type]:
         table_data = []
-        for model in sorted_filtered_models[cv_task_radio.get_value()][value]:
+        for model in sorted_filtered_models[task_type][value]:
+            _map = model.get("mAP")
+            if _map is None:
+                if task_type == "object detection":
+                    _map = model.get("mAP (box)")
+                else:
+                    _map = model.get("mAP (mask)")
+
             table_data.append(
                 [
                     model["model_name"],
                     model["Size (pixels)"],
-                    model["mAP"],
+                    _map,
                     model["params (M)"],
                     model["FLOPs (B)"],
                 ]
@@ -457,3 +467,18 @@ def update_model_selector(value):
             columns=["Model name", "Size (pixels)", "mAP", "Params (M)", "FLOPs (B)"],
         )
         model_selector_table.read_pandas(data)
+
+
+def update_training_data():
+    api = _init_api()
+
+    projects = api.project.get_list(
+        workspace_id=7, filters=[{"field": "type", "operator": "=", "value": "images"}]
+    )
+    data = []
+    for p in projects:
+        data.append([p.id, p.updated_at, p.name, p.images_count])
+
+    columns = ["ID", "Updated At", "Project name", "Items count"]
+    dataframe = pd.DataFrame(data=data, columns=columns)
+    training_data_table.read_pandas(dataframe)

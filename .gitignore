@@ -13,3 +13,5 @@ supervisely/
 supervisely
 dist
 ./app/
+
+sly_sdk_backup/
