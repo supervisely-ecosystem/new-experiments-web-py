@@ -398,6 +398,7 @@ class WebPyApplication(metaclass=Singleton):
         from fastapi.routing import Mount
 
         app_dir = Path(app_dir)
+        os.environ["IS_WEBPY_APP"] = "true" 
         # read requirements
         reqs = Path("sly_sdk/requirements.txt").read_text().splitlines()
         if requirements_path is not None:
