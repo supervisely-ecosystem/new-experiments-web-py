@@ -3,6 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.sdkbranch
+      args:
+        SDK_VERSION: ${SDK_VERSION:-$(date +%s)} # only for development
     command: bash -c "export PYTHONPATH=/app && python3 -u /app/supervisely/supervisely/webpy/render.py"
     working_dir: /app
     volumes:
