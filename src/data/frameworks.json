@@ -1,0 +1,48 @@
+[
+  {
+    "name": "YOLO",
+    "conference": null,
+    "released": 2025,
+    "tasks": {
+      "object detection": {
+        "metric": 55.2,
+        "models": 37
+      },
+      "instance segmentation": {
+        "metric": 43.8,
+        "models": 12
+      }
+    },
+    "real_time": true,
+    "onnx": true,
+    "tensorrt": true
+  },
+  {
+    "name": "DEIM",
+    "conference": null,
+    "released": 1111,
+    "tasks": {
+      "object detection": {
+        "metric": 100.0,
+        "models": 10
+      }
+    },
+    "real_time": false,
+    "onnx": false,
+    "tensorrt": false
+  },
+  {
+    "name": "RT-DETRv2",
+    "conference": "CVPR 2024",
+    "released": 2024,
+    "tasks": {
+      "object detection": {
+        "metric": 54.3,
+        "models": 5
+      }
+    },
+    "real_time": true,
+    "onnx": true,
+    "tensorrt": true
+  }
+]
