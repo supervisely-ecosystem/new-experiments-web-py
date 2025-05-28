@@ -29,7 +29,11 @@ custom_augmentations_text = Text(
     """You can define custom augmentations using the <strong>ML Pipelines</strong> app.<br> By default, the app will build a pipeline with the basic augmentations for the selected CV task.<br>"""
 )
 custom_augmentations_image = Image(url="static/data/ml_pipelines.png", widget_id="custom_aug_image")
-custom_augmentations_in_progress = Text("""in progress...""", status="warning")
+custom_augmentations_in_progress = Text(
+    """in progress...""",
+    status="warning",
+    widget_id="custom_augmentations_in_progress",
+)
 custom_augmentations_in_progress.hide()
 custom_augmentations = Container(
     [custom_augmentations_text, custom_augmentations_image, custom_augmentations_in_progress],
@@ -39,7 +43,7 @@ augmentations_mode = RadioGroup(
     items=[
         RadioGroup.Item("predefined", "Predefined Augmentations", content=augmentations_editor),
         RadioGroup.Item("custom", "Custom Augmentations", content=custom_augmentations),
-        RadioGroup.Item("none", "No Augmentations", content=Empty()),
+        RadioGroup.Item("none", "No Augmentations", content=Empty(widget_id="no_augmentations")),
     ],
     widget_id="augmentations_mode",
     direction="vertical",

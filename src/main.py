@@ -3,15 +3,16 @@ import src.sly_globals as g
 from src.ui.projects import set_training_data_table
 from src.ui.sidebar import sidebar
 from supervisely.webpy.app import WebPyApplication
-from supervisely.app.widgets import Container, Dialog
+from supervisely.app.widgets import Container, Dialog, Button
 
 # from sly_sdk.webpy.app import WebPyApplication
 
-dialog = Dialog(content=sidebar, title="New Experiment")
+btn = Button("Open Dialog", widget_id="open_dialog_btn")
+dialog = Dialog(content=sidebar, title="New Experiment", widget_id="main_dialog")
 dialog.show()
 
 
-layout = Container(widgets=[dialog])
+layout = Container(widgets=[btn, dialog], widget_id="main_container")
 
 
 app = WebPyApplication(layout=layout)
@@ -20,6 +21,11 @@ g.api = f._init_api(app)
 
 # update models
 set_training_data_table(g.api)
+
+@btn.click
+def on_btn_click():
+    """Callback function for button click event."""
+    dialog.show()
 
 # btn = Button("Click me")
 # editor = Editor(language_mode="yaml")

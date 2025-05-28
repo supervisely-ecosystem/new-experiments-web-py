@@ -14,7 +14,7 @@ pytorch_checkbox = Checkbox(
     content=Field(
         title="PyTorch",
         description="Default format to save checkpoints after training (.pth or .pt)",
-        content=Empty(),
+        content=Empty(widget_id="pytorch_checkbox_content"),
         widget_id="pytorch_checkbox_field",
     ),
     checked=True,
@@ -25,7 +25,7 @@ onnx_checkbox = Checkbox(
     content=Field(
         title="ONNX",
         description="Export the model in ONNX format (.onnx)",
-        content=Empty(),
+        content=Empty(widget_id="onnx_checkbox_content"),
         widget_id="onnx_checkbox_field",
     ),
     checked=False,
@@ -36,7 +36,7 @@ tesorrt_checkbox = Checkbox(
     content=Field(
         title="TensorRT",
         description="Export the model in TensorRT format (.engine)",
-        content=Empty(),
+        content=Empty(widget_id="tensorrt_checkbox_content"),
         widget_id="tensorrt_checkbox_field",
     ),
     checked=False,

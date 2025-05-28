@@ -38,6 +38,7 @@ change_experiment_name = Button(
     button_type="text",
     # button_size="mini",
     icon_gap=0,
+    widget_id="change_experiment_name_button",
 )
 experiment_name_input = Input(
     placeholder="Experiment name", widget_id="experiment_name_input", icon="edit"
@@ -59,7 +60,7 @@ experiment_name_controls_box = Flexbox(
         experiment_name_input,
         experiment_name_save_btn,
         change_experiment_name,
-        Empty(style="width: 70%"),
+        Empty(style="width: 70%", widget_id="experiment_name_empty"),
     ],
     widget_id="train_controls_box",
 )

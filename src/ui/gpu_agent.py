@@ -57,7 +57,10 @@ no_gpu_collapse = Collapse(
             "Rent a GPU agent",
             "Rent a GPU agent",
             content=Container(
-                [Text("Contact us to rent a GPU agent", font_size=12), rent_gpu_btn],
+                [
+                    Text("Contact us to rent a GPU agent", font_size=12, widget_id="rent_gpu_text"),
+                    rent_gpu_btn,
+                ],
                 widget_id="rent_gpu_agent",
             ),
         ),

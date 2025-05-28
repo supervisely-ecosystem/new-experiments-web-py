@@ -10,7 +10,7 @@ info = """
     For the instance segmentation task, only polygon and bitmap classes will be available.
 """
 classes_info = Text(status="info", widget_id="classes_info", text=info)
-classes_list_selector = ClassesTable()
+classes_list_selector = ClassesTable(widget_id="classes_list_selector")
 classes_selected_text = Text("", status="success", widget_id="classes_selected_text")
 # classes_list_selector_btn = Button(text="Confirm", widget_id="classes_list_selector_button")
 classes_list_selector_section_cont = Container(

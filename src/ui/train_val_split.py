@@ -28,7 +28,7 @@ train_val_split_info = Text(
 )
 
 collections_split = TrainValSplits(
-    random_splits=False, datasets_splits=False, tags_splits=False, collections_splits=True
+    random_splits=False, datasets_splits=False, tags_splits=False, collections_splits=True, widget_id="collections_split"
 )
 collections_split_content = collections_split._content._items[0].content
 # train_col = Select(items=[], multiple=True, widget_id="train_col")
@@ -57,6 +57,7 @@ notification_box = NotificationBox(
     title="Notice: How to make equal splits",
     description="Choose the same dataset(s) for train/validation to make splits equal. Can be used for debug and for tiny projects",
     box_type="info",
+    widget_id="train_val_split_notification_box",
 )
 train_ds = SelectDatasetTree(
     multiselect=True,
@@ -86,17 +87,19 @@ train_field = Field(
     train_ds,
     title="Train dataset(s)",
     description=f"all images in selected dataset(s) are considered as training set",
+    widget_id="train_dataset_field",
 )
 val_field = Field(
     val_ds,
     title="Validation dataset(s)",
     description=f"all images in selected dataset(s) are considered as validation set",
+    widget_id="val_dataset_field",
 )
 ds_cont = Container(
     widgets=[notification_box, train_field, val_field], direction="vertical", gap=5, widget_id="datasets_cont"
 )
 
-random_split = RandomSplitsTable(items_count=100)
+random_split = RandomSplitsTable(items_count=100, widget_id="random_split_table")
 
 
 mode_text = Text("Split mode", widget_id="train_val_split_mode_text")

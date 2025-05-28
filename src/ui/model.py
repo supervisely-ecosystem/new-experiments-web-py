@@ -76,7 +76,10 @@ sorted_filtered_models = {
 items = [
     RadioCard.Item(
         title="All models",
-        content=Image(url="https://demo.supervisely.com/img/images-v2-light-dark.121c868.png"),
+        content=Image(
+            url="https://demo.supervisely.com/img/images-v2-light-dark.121c868.png",
+            widget_id="all_models_image",
+        ),
         description="Explore all models for selected task type. Sort or filter them by architecture, metric or other parameters in the table below.",
         # img="https://demo.supervisely.com/img/images-v2-light-dark.121c868.png",
         tag="ALL MODELS",
@@ -85,7 +88,9 @@ items = [
     ),
     RadioCard.Item(
         title="YOLO",
-        content=Image(url="https://demo.supervisely.com/img/images-v1.ce5de12.png"),
+        content=Image(
+            url="https://demo.supervisely.com/img/images-v1.ce5de12.png", widget_id="yolo_image"
+        ),
         description="Explore YOLO models for selected task type. Sort or filter them by architecture, metric or other parameters in the table below.",
         # description_content=Text("This is content of item 2", status="info"),
         # img="https://demo.supervisely.com/img/images-v1.ce5de12.png",
@@ -95,7 +100,9 @@ items = [
     ),
     RadioCard.Item(
         title="DEIM",
-        content=Image(url="https://demo.supervisely.com/img/images-v1.ce5de12.png"),
+        content=Image(
+            url="https://demo.supervisely.com/img/images-v1.ce5de12.png", widget_id="deim_image"
+        ),
         description="Explore DETR models for selected task type. Sort or filter them by architecture, metric or other parameters in the table below.",
         # img="https://demo.supervisely.com/img/images-v1.ce5de12.png",
         tag="DEIM",
@@ -104,7 +111,10 @@ items = [
     ),
     RadioCard.Item(
         title="RT-DETRv2",
-        content=Image(url="https://demo.supervisely.com/img/images-v1.ce5de12.png"),
+        content=Image(
+            url="https://demo.supervisely.com/img/images-v1.ce5de12.png",
+            widget_id="rt_detrv2_image",
+        ),
         description="Explore RT-DETRv2 models for selected task type. Sort or filter them by architecture, metric or other parameters in the table below.",
         # img="https://demo.supervisely.com/img/images-v1.ce5de12.png",
         tag="RT-DETRv2",
@@ -113,7 +123,10 @@ items = [
     ),
     RadioCard.Item(
         title="Recommendations",
-        content=Image(url="https://demo.supervisely.com/img/images-v1.ce5de12.png"),
+        content=Image(
+            url="https://demo.supervisely.com/img/images-v1.ce5de12.png",
+            widget_id="recommendations_image",
+        ),
         description="Description",
         # img="https://demo.supervisely.com/img/images-v1.ce5de12.png",
         tag="RECOMMENDATIONS",
@@ -135,6 +148,7 @@ models_table_notification = NotificationBox(
         "If you want to see list of available models for another computer vision task, "
         "please, go back to task type & training classes step and change task type"
     ),
+    widget_id="models_table_notification",
 )
 arch_selector_cont = Field(
     content=Container(

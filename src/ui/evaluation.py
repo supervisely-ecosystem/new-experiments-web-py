@@ -18,7 +18,7 @@ evaluate_checkbox = Checkbox(
     content=Field(
         title="Run Model Evaluation",
         description="Evaluate the trained model on the validation dataset to measure accuracy and performance",
-        content=Empty(),
+        content=Empty(widget_id="eval_checkbox_content"),
         widget_id="eval_checkbox_field",
     ),
     checked=True,
@@ -28,7 +28,7 @@ speedtest_checkbox = Checkbox(
     content=Field(
         title="Run Speed Test",
         description="Measure model inference speed (FPS) on your hardware configuration",
-        content=Empty(),
+        content=Empty(widget_id="speedtest_checkbox_content"),
         widget_id="speedtest_checkbox_field",
     ),
     checked=False,

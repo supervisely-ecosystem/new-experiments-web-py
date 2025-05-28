@@ -41,17 +41,26 @@ def on_cv_task_btn_click(cv_task):
 items = [
     RadioCard.Item(
         title="Object Detection",
-        content=Image(url="https://demo.supervisely.com/img/images-v2-light-dark.121c868.png"),
+        content=Image(
+            url="https://demo.supervisely.com/img/images-v2-light-dark.121c868.png",
+            widget_id="object_detection_image",
+        ),
         description="Object detection is a computer vision task that involves identifying and locating objects within an image or video. Available geometry type is bounding box (Rectangle). For other geometry types the app will try to convert them to bounding boxes",
     ),
     RadioCard.Item(
         title="Instance Segmentation",
-        content=Image(url="https://demo.supervisely.com/img/images-v2-light-dark.121c868.png"),
+        content=Image(
+            url="https://demo.supervisely.com/img/images-v2-light-dark.121c868.png",
+            widget_id="instance_segmentation_image",
+        ),
         description="Instance segmentation takes object detection a step further by not only identifying and locating objects but also delineating their precise boundaries at the pixel level. This means that each instance of an object is segmented from the background and from other instances of the same object class.",
     ),
     RadioCard.Item(
         title="Semantic Segmentation",
-        content=Image(url="https://demo.supervisely.com/img/images-v2-light-dark.121c868.png"),
+        content=Image(
+            url="https://demo.supervisely.com/img/images-v2-light-dark.121c868.png",
+            widget_id="semantic_segmentation_image",
+        ),
         description="Semantic segmentation is a computer vision task that involves classifying each pixel in an image into a predefined category or class. Unlike instance segmentation, which distinguishes between different instances of the same object class, semantic segmentation treats all instances of a class as belonging to the same category.",
         tag="Comming soon...",
         tag_icon="zmdi-lock",
