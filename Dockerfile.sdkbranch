@@ -9,7 +9,7 @@ COPY dev_requirements.txt /app/
 
 # development requirements
 ARG SDK_VERSION
-RUN pip install --no-cache-dir git+https://github.com/supervisely/supervisely.git@web-py-sdk
-RUN git clone -b web-py-sdk https://github.com/supervisely/supervisely.git /app/supervisely
+RUN pip install --no-cache-dir git+https://github.com/supervisely/supervisely.git@test-web-py-with-solutions
+RUN git clone -b test-web-py-with-solutions https://github.com/supervisely/supervisely.git /app/supervisely
 
 CMD ["bash"]
