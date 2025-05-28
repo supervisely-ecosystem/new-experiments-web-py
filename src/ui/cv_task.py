@@ -67,8 +67,7 @@ cv_radio_card_container = Container(
 
 
 @cv_radio_card.value_changed
-def on_cv_task_section_cont_value_changed():
-    selected_idx = cv_radio_card.get_active_idx()
+def on_cv_task_section_cont_value_changed(selected_idx):
     task_type = [
         sly.nn.TaskType.OBJECT_DETECTION,
         sly.nn.TaskType.INSTANCE_SEGMENTATION,
