@@ -227,12 +227,9 @@ def start_training():
             )
 
     train_status_text.set("Starting training...", status="info")
-    training_thread = threading.Thread(
-        target=g.api.app.send_request,
-        args=(session.task_id, "train_from_api", {"app_state": app_state}),
-        daemon=True,
+    g.api.app.send_request(
+        session.task_id, "train_from_api", {"app_state": app_state, "wait": False}
     )
-    training_thread.start()
     train_status_text.set("Training started. You can close this window.", status="success")
     # g.api.app.stop(session.task_id)
     return session.task_id
