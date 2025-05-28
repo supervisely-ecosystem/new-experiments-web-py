@@ -86,7 +86,12 @@ def on_cv_task_section_cont_value_changed(selected_idx):
 
 
 cv_task_section_cont = Container(
-    [cv_task_info, cv_task_radio, Empty(style="height: 100px"), cv_radio_card],
+    [
+        cv_task_info,
+        cv_task_radio,
+        Empty(style="height: 100px", widget_id="cv_task_empty"),
+        cv_radio_card,
+    ],
     widget_id="cv_task_container",
 )
 cv_task_section = Field(content=cv_task_section_cont, widget_id="cv_task_section", title="CV Task")
