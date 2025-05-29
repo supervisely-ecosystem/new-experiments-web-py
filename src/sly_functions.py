@@ -4,6 +4,7 @@ from typing import List, Tuple, Union
 import pandas as pd
 
 from supervisely.api.api import Api
+from supervisely.io.env import server_address as env_server_address
 from supervisely.io.env import workspace_id
 from supervisely.io.json import load_json_file
 from supervisely.sly_logger import logger
@@ -82,12 +83,22 @@ def update_model_selector(selected_arch: Union[str, List], task_type: str, all_m
 
 
 def _init_api(app=None):
+    from supervisely._utils import running_in_webpy_app
     from supervisely.api.api import Api
 
-    # server_address = app.get_server_address()
-    # api_token = app.get_api_token()
-    # api = Api(server_address, api_token, ignore_task_id=True)
-    api = Api.from_env()
+    if running_in_webpy_app():
+        # If running in a webpy app, use the app's API
+        if app is None:
+            raise ValueError("app parameter must be provided when running in a webpy app")
+        try:
+            server_address = app.get_server_address()
+        except Exception as e:
+            logger.warning("Failed to get server address, using environment variable instead")
+            server_address = env_server_address(raise_not_found=False)
+        api_token = app.get_api_token()
+        api = Api(server_address, api_token, ignore_task_id=True)
+    else:
+        api = Api.from_env()
     return api
 
 
