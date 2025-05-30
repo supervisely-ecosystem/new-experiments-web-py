@@ -1,7 +1,7 @@
 import pandas as pd
 
-from sly_sdk.annotation.obj_class import ObjClass
-from sly_sdk.webpy.app import WebPyApplication
+from supervisely.annotation.obj_class import ObjClass
+from supervisely.webpy.app import WebPyApplication
 from supervisely.api.api import Api
 from supervisely.app.widgets import (
     Button,

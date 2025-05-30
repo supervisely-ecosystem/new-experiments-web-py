@@ -4,14 +4,16 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.sdkbranch
-    command: bash -c "export PYTHONPATH=/app && python3 -u /app/sly_sdk/render.py"
+    command: bash -c "export PYTHONPATH=/app && python3 -u /app/render.py"
     working_dir: /app
     volumes:
-    - ./sly_sdk:/app/sly_sdk:ro
     - ./src:/app/src:ro
     - ./config.json:/app/config.json:ro
     - ./requirements.txt:/app/requirements.txt:ro
     - ./dist:/app/app
+    - ./dev_requirements.txt:/app/dev_requirements.txt:ro
+    - ./render.py:/app/render.py:ro
+    - ./local.env:/root/supervisely.env:ro
 
   static:
     image: flashspys/nginx-static
